@@ -54,7 +54,6 @@ cmake --build build --config Release -j
 | --- | --- |
 | `llama-cli` | 通用对话 / 补全 CLI |
 | `llama-embedding` | Embedding 模型推理 CLI |
-| `llama-seq2seq` | Seq2Seq 模型推理 CLI（本文档重点） |
 | `llama-server` | OpenAI 兼容的 HTTP 服务 |
 | `llama-quantize` | 模型量化工具 |
 | `llama-bench` | 性能基准测试 |
@@ -91,7 +90,7 @@ python convert_hf_to_gguf.py ./models/bge-small-en --outfile ./models/bge-small-
 将一段中文文本翻译为英文：
 
 ```bash
-./build/bin/llama-seq2seq \
+./build/bin/llama-cli \
   -m ./models/mt5-base.Q4_K_M.gguf \
   -p "translate Chinese to English: 你好，世界！" \
   -n 128 \
@@ -102,7 +101,7 @@ python convert_hf_to_gguf.py ./models/bge-small-en --outfile ./models/bge-small-
 使用 Beam Search 进行摘要生成：
 
 ```bash
-./build/bin/llama-seq2seq \
+./build/bin/llama-cli \
   -m ./models/bart-large-cnn.Q4_K_M.gguf \
   -p "summarize: <长文本>..." \
   -n 256 \
